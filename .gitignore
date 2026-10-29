@@ -1,0 +1,21 @@
+# Credentials never belong in the repo. They live outside it, in
+# C:\Users\dehre\.agent-*  — these patterns are a second line of defence in
+# case one is ever copied in here by mistake.
+*.env
+.env*
+*token*.json
+*creds*.json
+client_secret*.json
+.google-*
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Editors / OS
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini
