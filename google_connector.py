@@ -174,7 +174,11 @@ def list_events(days: int = 7, calendar_id: str = "primary") -> str:
     lines = []
     for e in events:
         start = e["start"].get("dateTime", e["start"].get("date", ""))
-        lines.append(f"[{e['id'][:16]}] {start[:16]}  {e.get('summary', '(no title)')}"
+        # The id is printed WHOLE. This listing is the only place the agent
+        # sees one, so a truncated id here means delete_event gets a broken
+        # id and Google answers 404 - the event silently survives. Calendar
+        # ids are ~26 characters, and a recurring instance is longer still.
+        lines.append(f"[{e['id']}] {start[:16]}  {e.get('summary', '(no title)')}"
                      + (f"  @ {e['location'][:40]}" if e.get("location") else ""))
     return f"{len(events)} event(s) in the next {days} days:\n\n" + "\n".join(lines)
 

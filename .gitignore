@@ -19,3 +19,8 @@ venv/
 .idea/
 Thumbs.db
 desktop.ini
+
+# The teacher role describes a real person; only the example ships.
+roles/teacher.md
+teaching/
+progress.md
